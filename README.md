@@ -1,2 +1,2 @@
 # springstudy2(ex05)
-공부용
+스프링 공부용
