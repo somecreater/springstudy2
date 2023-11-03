@@ -87,6 +87,7 @@ public class UploadController {
 		return false;
 	}
 	
+	//나중에 파일명 관련문제 해결해야 할듯(s_가 들어간 원래 파일(또는 경로)의 이름에 대한 처리문제)
 	@PostMapping(value="/uploadAjaxAction", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List <AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
@@ -215,7 +216,9 @@ public class UploadController {
 			if (type.equals("image")) {
 
 				String largeFileName = file.getAbsolutePath().replace("s_", "");
-
+				log.info("file 경로: "+file.getAbsoluteFile());
+				//String largeFileName =file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("\s_")+1);
+				
 				log.info("largeFileName: " + largeFileName);
 
 				file = new File(largeFileName);
